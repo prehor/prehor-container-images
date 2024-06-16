@@ -1,0 +1,39 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: "Render Readme"
+
+on:
+  workflow_call:
+
+jobs:
+  render-readme:
+    name: Render README
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+          cache: pip
+
+      - name: Install Python Requirements
+        shell: bash
+        run: pip install -r ./.github/scripts/requirements.txt && pip freeze
+
+      - name: Render README
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        shell: bash
+        run: python ./.github/scripts/render-readme.py
+
+      - name: Commit Changes
+        shell: bash
+        run: |
+          git config --global user.name "prehor"
+          git config --global user.email "rx@rx.cz"
+          git add ./README.md
+          git commit -m "chore: render README.md" || echo "No changes to commit"
+          git push origin || echo "No changes to push"
