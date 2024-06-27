@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 : "${INIT_EMQX_API_HOST:=localhost}"
 : "${INIT_EMQX_API_PORT:=18083}"
