@@ -110,6 +110,8 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 Container | Channel | Image
 --- | --- | ---
+[alpine](https://github.com/prehor/container-images/pkgs/container/alpine) | stable | ghcr.io/prehor/alpine
+
 
 ## Deprecations
 
