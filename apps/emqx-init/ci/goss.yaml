@@ -1,0 +1,9 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/goss-org/goss/master/docs/schema.yaml
+process:
+  entrypoint.sh:
+    running: true
+file:
+  /entrypoint.sh:
+    exists: true
+    mode: "0755"
