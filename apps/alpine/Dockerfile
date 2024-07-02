@@ -12,7 +12,9 @@ ENV CHARSET="UTF-8" \
 RUN \
     mkdir /config \
     && \
-    adduser app -D -u 568 -g 568 \
+    adduser app -D -u 568 -g 568 -h /config \
+    && \
+    chown 568:568 /config \
     && \
     apk add --no-cache \
         bash \
