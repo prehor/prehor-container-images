@@ -1,4 +1,4 @@
-FROM ghcr.io/prehor/alpine:3.20@sha256:3f10abffcc9280fe75c2598bf6260f7c7ce86e9cc25756fa8dabe0da8e3a954b
+FROM ghcr.io/prehor/alpine:3.20@sha256:ec469034f884e3068c0efb7cdff3660a41f7960f94bcde428daf92165062978d
 
 ARG TARGETPLATFORM
 ARG VERSION
