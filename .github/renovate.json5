@@ -45,6 +45,32 @@
       "matchUpdateTypes": ["patch"],
       "semanticCommitScope": "{{parentDir}}",
       "semanticCommitType": "fix"
+    },
+    {
+      "description": ["Alpine Toolbox Group"],
+      "groupName": "Alpine Toolbox",
+      "matchDatasources": ["docker"],
+      "matchFileNames": ["apps/alpine-toolbox/**"],
+      "matchPackageNames": ["docker.io/library/alpine"],
+      "group": {
+        "commitMessageTopic": "{{{groupName}}} group"
+      },
+      "separateMinorPatch": true
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": ["Process custom dependencies"],
+      "fileMatch": [
+        "(^|/)apps/.+/ci/latest\\.sh$"
+      ],
+      "matchStrings": [
+        // # renovate: datasource=docker depName=docker.io/library/alpine
+        // version="3.20.1"
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\nversion=\"(?<currentValue>\\d[^\"]+)\""
+      ],
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}docker{{/if}}"
     }
   ]
 }
