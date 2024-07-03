@@ -50,7 +50,7 @@
       "description": ["Alpine Toolbox Group"],
       "groupName": "Alpine Toolbox",
       "matchDatasources": ["docker"],
-      "matchFileNames": ["apps/alpine-toolbox/**"],
+      // "matchFileNames": ["apps/alpine-toolbox/**"],
       "matchPackageNames": ["docker.io/library/alpine"],
       "group": {
         "commitMessageTopic": "{{{groupName}}} group"
