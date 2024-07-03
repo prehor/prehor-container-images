@@ -10,6 +10,9 @@
   ],
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
+  "docker": {
+    "pinDigests": true
+  },
   "packageRules": [
     {
       "addLabels": ["renovate/container", "type/major"],
@@ -45,6 +48,21 @@
       "matchUpdateTypes": ["patch"],
       "semanticCommitScope": "{{parentDir}}",
       "semanticCommitType": "fix"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": ["Process custom dependencies"],
+      "fileMatch": [
+        "(^|/)apps/.+/ci/latest\\.sh$"
+      ],
+      "matchStrings": [
+        // # renovate: datasource=docker depName=docker.io/library/alpine
+        // version="3.20.1"
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\nversion=\"(?<currentValue>\\d[^\"]+)\""
+      ],
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}docker{{/if}}"
     }
   ]
 }

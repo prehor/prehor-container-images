@@ -1,4 +1,4 @@
-FROM ghcr.io/prehor/alpine:rolling
+FROM ghcr.io/prehor/alpine:3.20
 
 ARG TARGETPLATFORM
 ARG VERSION
