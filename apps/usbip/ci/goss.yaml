@@ -1,0 +1,13 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/goss-org/goss/master/docs/schema.yaml
+process:
+  entrypoint.sh:
+    running: true
+file:
+  /entrypoint.sh:
+    exists: true
+    mode: "0755"
+  /usr/sbin/usbip:
+    exists: true
+  /usr/sbin/usbipd:
+    exists: true
