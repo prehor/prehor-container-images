@@ -111,6 +111,7 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 Container | Channel | Image
 --- | --- | ---
 [alpine](https://github.com/prehor/container-images/pkgs/container/alpine) | stable | ghcr.io/prehor/alpine
+[emqx-init](https://github.com/prehor/container-images/pkgs/container/emqx-init) | stable | ghcr.io/prehor/emqx-init
 [usbip](https://github.com/prehor/container-images/pkgs/container/usbip) | stable | ghcr.io/prehor/usbip
 
 
