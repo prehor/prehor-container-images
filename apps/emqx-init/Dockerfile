@@ -5,25 +5,26 @@ ARG VERSION
 ARG CHANNEL
 
 ENV CHARSET="UTF-8" \
-    LANG="en_US.UTF-8" \
-    TZ="Etc/UTC"
+    LANG="en_US.UTF-8"
 
-RUN \
-    mkdir /config \
+RUN set -e \
     && \
-    adduser app -D -u 568 -g 568 -h /config \
+    addgroup app -g 568 \
     && \
-    chown 568:568 /config \
+    adduser app -D -u 568 -G app -h /config \
     && \
     apk add --no-cache \
         bash \
         ca-certificates \
         catatonit \
-        curl
+        curl \
+        less
 
+COPY ./apps/alpine-toolbox/rootfs /
 COPY ./apps/emqx-init/entrypoint.sh /entrypoint.sh
 
 USER app
+WORKDIR /config
 
 ENTRYPOINT ["/usr/bin/catatonit", "--"]
 CMD ["/entrypoint.sh"]
