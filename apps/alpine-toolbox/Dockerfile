@@ -7,26 +7,31 @@ ARG CHANNEL
 
 ENV CHARSET="UTF-8" \
     LANG="en_US.UTF-8" \
-    TZ="Etc/UTC"
+    ENTRYPOINT_COMMAND="/bin/bash"
 
-RUN \
-    mkdir /config \
+RUN set -e \
     && \
-    adduser app -D -u 568 -g 568 -h /config \
+    addgroup app -g 568 \
     && \
-    chown 568:568 /config \
+    adduser app -D -u 568 -G app -h /config \
     && \
     apk add --no-cache \
         bash \
         ca-certificates \
         catatonit \
         curl \
+        less \
         \
         git \
-        grep \
-        less
+        openssl \
+    && \
+    sed -i -E 's/^(.*(CHARSET|LANG)=)/#\1/' /etc/profile
 
+COPY ./apps/alpine-toolbox/rootfs /
 COPY ./apps/alpine-toolbox/entrypoint.sh /entrypoint.sh
+
+USER app
+WORKDIR /config
 
 ENTRYPOINT ["/usr/bin/catatonit", "--"]
 CMD ["/entrypoint.sh"]
