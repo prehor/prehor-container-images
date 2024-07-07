@@ -24,6 +24,7 @@ RUN set -e \
         \
         git \
         openssl \
+        openssh \
     && \
     sed -i -E 's/^(.*(CHARSET|LANG)=)/#\1/' /etc/profile
 
