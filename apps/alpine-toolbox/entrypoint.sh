@@ -12,8 +12,8 @@ if [ ! -e ~/.gitconfig ]; then
         autosetuprebase = always
 [user]
 EOF
-    if [ -n "${GITCONFIG_USER_EMAIL}" ]; then
-        echo "        email = ${GITCONFIG_USER_EMAIL}" >> ~/.gitconfig
+    if [ -n "${GITCONFIG_USER_MAIL}" ]; then
+        echo "        email = ${GITCONFIG_USER_MAIL}" >> ~/.gitconfig
     fi
     if [ -n "${GITCONFIG_USER_NAME}" ]; then
         echo "        name = ${GITCONFIG_USER_NAME}" >> ~/.gitconfig
