@@ -22,6 +22,7 @@ RUN set -e \
         less \
         \
         git \
+        jq \
         openssl \
         openssh \
     && \
