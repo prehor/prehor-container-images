@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Setup Git global config
-if [ ! -e ~/.gitconfig ]; then
-    cat > ~/.gitconfig <<EOF
+if [[ "${GITCONFIG}" =~ '^(1|on|yes|true)$' ]]; then
+    if [ ! -e ~/.gitconfig ]; then
+        cat > ~/.gitconfig <<EOF
 [filter "lfs"]
         process = git-lfs filter-process
         required = true
@@ -10,13 +11,16 @@ if [ ! -e ~/.gitconfig ]; then
         smudge = git-lfs smudge -- %f
 [branch]
         autosetuprebase = always
+[safe]
+        directory = /config
 [user]
 EOF
-    if [ -n "${GITCONFIG_USER_MAIL}" ]; then
-        echo "        email = ${GITCONFIG_USER_MAIL}" >> ~/.gitconfig
-    fi
-    if [ -n "${GITCONFIG_USER_NAME}" ]; then
-        echo "        name = ${GITCONFIG_USER_NAME}" >> ~/.gitconfig
+        if [ -n "${GITCONFIG_USER_MAIL}" ]; then
+            echo "        email = ${GITCONFIG_USER_MAIL}" >> ~/.gitconfig
+        fi
+        if [ -n "${GITCONFIG_USER_NAME}" ]; then
+            echo "        name = ${GITCONFIG_USER_NAME}" >> ~/.gitconfig
+        fi
     fi
 fi
 
