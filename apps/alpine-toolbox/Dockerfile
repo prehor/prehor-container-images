@@ -6,8 +6,7 @@ ARG VERSION
 ARG CHANNEL
 
 ENV CHARSET="UTF-8" \
-    LANG="en_US.UTF-8" \
-    ENTRYPOINT_COMMAND="/bin/bash"
+    LANG="en_US.UTF-8"
 
 RUN set -e \
     && \
