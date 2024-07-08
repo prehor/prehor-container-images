@@ -18,7 +18,9 @@ RUN set -e \
         ca-certificates \
         catatonit \
         curl \
-        less
+        less \
+        \
+        jq
 
 COPY ./apps/alpine-toolbox/rootfs /
 COPY ./apps/emqx-init/entrypoint.sh /entrypoint.sh
